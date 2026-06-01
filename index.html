@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="https://discord.gg/Sbv3XKDbrP" target="_blank" class="discord-badge" title="Join our Discord community!">
+    <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="#fff">
+      <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a74.37,74.37,0,0,0,6.65-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,75.8,0c.79.7,1.63,1.39,2.51,2a68.12,68.12,0,0,1-10.5,5,77.06,77.06,0,0,0,6.65,10.85,105.38,105.38,0,0,0,32.57-18.83C129.74,48.46,123.63,25.64,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.88,46,53.88,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.12,46,96.12,53,91,65.69,84.69,65.69Z"/>
+    </svg>
+    <span>Join our Discord</span>
+  </a>
+
+  <button id="settingsBtn" class="settings-toggle-btn" title="Customize Dashboard">⚙️</button>
+
+  <div id="appScaleWrapper" class="global-wrapper">
+    
+    <div class="search-container">
+      <div class="welcome-text">Welcome, <span class="welcome-badge">Friend</span></div>
+      <form action="https://www.google.com/search" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search or type a URL" autocomplete="off" autofocus>
+      </form>
+    </div>
+
+    <div class="dashboard-grid">
+      
+      <div id="widget-date" class="card widget-card date-card">
+        <div class="date-day-name" id="dateDayName">SUNDAY</div>
+        <div class="date-day-number" id="dateDayNumber">31</div>
+        <div class="date-month-name" id="dateMonthName">MAY</div>
+      </div>
+
+      <div id="widget-clock" class="card widget-card clock-card">
+        <div class="clock-time" id="clockTime">00:00:00</div>
+        <div class="clock-full-date" id="clockFullDate">Sunday, May 31, 2026</div>
+      </div>
+
+      <div id="widget-todo" class="card widget-card todo-card">
+        <h3>To do</h3>
+        <div class="todo-input-row">
+          <input type="text" id="todoInput" placeholder="Add task..." maxlength="50">
+          <button id="todoAddBtn">Add</button>
+        </div>
+        <ul class="todo-list" id="todoList">
+          </ul>
+      </div>
+
+      <div id="widget-weather" class="card widget-card weather-card">
+        <div class="weather-info">
+          <span class="weather-dash">—</span>
+          <p class="weather-text">Enter city or tap 📍 to use local weather.</p>
+        </div>
+        <div class="weather-temp-container">
+          <span class="weather-icon">🌡️</span>
+          <span class="weather-temp">--°C</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="settingsPanel" class="settings-drawer">
+    <div class="drawer-header">
+      <h2>Customization Panel</h2>
+      <button id="closeSettingsBtn" class="close-btn">&times;</button>
+    </div>
+    
+    <div class="drawer-body">
+      <div class="setting-group">
+        <label for="scaleSlider">UI Scale (<span id="scaleValue">100</span>%)</label>
+        <input type="range" id="scaleSlider" min="0.5" max="1.5" step="0.05" value="1">
+      </div>
+
+      <hr>
+
+      <div class="setting-group">
+        <label>Custom Wallpaper</label>
+        <input type="file" id="wallpaperUpload" accept="image/*">
+        <button id="resetWallpaperBtn" class="danger-btn">Reset to Default</button>
+      </div>
+
+      <hr>
+
+      <div class="setting-group">
+        <label>Custom Typography Font</label>
+        <input type="file" id="fontUpload" accept=".ttf,.otf,.woff,.woff2">
+        <button id="resetFontBtn" class="danger-btn">Reset Font</button>
+      </div>
+
+      <hr>
+
+      <div class="setting-group">
+        <label>Toggle Visible Elements</label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="toggleDate" checked> Date Module
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="toggleClock" checked> Clock Module
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="toggleTodo" checked> To-Do List
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="toggleWeather" checked> Weather Display
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
