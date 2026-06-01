@@ -181,10 +181,12 @@ async function loadSavedConfiguration() {
       document.getElementById(widgetId).style.display = isVisible ? (widgetId === 'widget-quicklinks' ? 'flex' : '') : 'none';
     });
 
-    if (data.todoList) {
+  if (data.todoList) {
       todoItems = data.todoList;
       renderTodoEntries();
     }
+    
+          document.body.classList.add('loaded');
   });
 }
 
