@@ -1,0 +1,425 @@
+:root {
+  --ui-scale: 1;
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-blur: blur(25px);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #0b4fe6 0%, #4f96fd 40%, #a2c6ff 70%, #1656e9 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+}
+
+/* Global scale hook wrapper */
+.global-wrapper {
+  transform: scale(var(--ui-scale));
+  transform-origin: top center;
+  width: 100%;
+  max-width: 1100px;
+  transition: transform 0.15s ease-out;
+}
+
+/* Base Glass Design Rules */
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+/* Top Navigation & Search Structure */
+.search-container {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 20px;
+  padding: 12px 24px;
+  width: 100%;
+  margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+.welcome-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.welcome-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.search-form {
+  flex-grow: 1;
+}
+
+.search-form input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.search-form input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Main Layout Grid Matching Reference Visuals */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Date Widget Design */
+.date-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  aspect-ratio: 1 / 1;
+}
+
+.date-day-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+}
+
+.date-day-number {
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 4px 0;
+}
+
+.date-month-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* Clock Widget Design */
+.clock-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.clock-time {
+  font-size: 4.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.clock-full-date {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+
+/* To Do List Design Layout */
+.todo-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.todo-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.todo-input-row input {
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 8px 14px;
+  color: #fff;
+  outline: none;
+}
+
+.todo-input-row button {
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.todo-input-row button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.todo-list {
+  list-style: none;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.todo-item button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.todo-item button:hover {
+  color: #ff6b6b;
+}
+
+/* Weather Display Setup */
+.weather-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+}
+
+.weather-info {
+  max-width: 65%;
+}
+
+.weather-dash {
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: block;
+}
+
+.weather-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.weather-temp-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-icon {
+  font-size: 2.2rem;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Discord Anchor Button Hook */
+.discord-badge {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 99;
+  background: #5865F2;
+  border-radius: 50px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.discord-badge:hover {
+  transform: translateY(-2px);
+  background: #4752c4;
+}
+
+/* Gear Controls Settings Panel Trigger */
+.settings-toggle-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.settings-toggle-btn:hover {
+  transform: rotate(45deg);
+}
+
+/* Flyout Settings Panel Setup */
+.settings-drawer {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100vh;
+  background: rgba(15, 25, 50, 0.85);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  z-index: 1000;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.25);
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px;
+  color: #fff;
+}
+
+.settings-drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.drawer-header h2 {
+  font-size: 1.3rem;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+}
+
+.setting-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.setting-group input[type="range"] {
+  width: 100%;
+}
+
+.setting-group input[type="file"] {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.checkbox-container {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 6px !important;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 16px 0;
+}
+
+.danger-btn {
+  background: rgba(234, 67, 53, 0.3);
+  border: 1px solid rgba(234, 67, 53, 0.5);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.danger-btn:hover {
+  background: rgba(234, 67, 53, 0.5);
+}
+
+/* Custom Scrollbar styling for widget containers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
