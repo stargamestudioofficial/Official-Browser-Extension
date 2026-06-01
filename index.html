@@ -20,10 +20,22 @@
   <div id="appScaleWrapper" class="global-wrapper">
     
     <div class="search-container">
-      <div class="welcome-text">Welcome, <span class="welcome-badge">Friend</span></div>
+      <div class="welcome-text">Welcome, <span class="welcome-badge" id="displayNickname">Friend</span></div>
       <form action="https://www.google.com/search" method="GET" class="search-form">
         <input type="text" name="q" placeholder="Search or type a URL" autocomplete="off" autofocus>
       </form>
+    </div>
+
+    <div id="widget-quicklinks" class="quicklinks-container">
+      <a href="https://www.youtube.com" target="_blank" class="quicklink-item">
+        <span class="link-icon">📺</span> YouTube
+      </a>
+      <a href="https://docs.google.com" target="_blank" class="quicklink-item">
+        <span class="link-icon">📄</span> Google Docs
+      </a>
+      <a href="https://sheets.google.com" target="_blank" class="quicklink-item">
+        <span class="link-icon">📊</span> Google Sheets
+      </a>
     </div>
 
     <div class="dashboard-grid">
@@ -45,8 +57,7 @@
           <input type="text" id="todoInput" placeholder="Add task..." maxlength="50">
           <button id="todoAddBtn">Add</button>
         </div>
-        <ul class="todo-list" id="todoList">
-          </ul>
+        <ul class="todo-list" id="todoList"></ul>
       </div>
 
       <div id="widget-weather" class="card widget-card weather-card">
@@ -71,6 +82,13 @@
     
     <div class="drawer-body">
       <div class="setting-group">
+        <label for="inputNickname">Custom Nickname</label>
+        <input type="text" id="inputNickname" placeholder="Enter your name..." maxlength="20" class="panel-text-input">
+      </div>
+
+      <hr>
+
+      <div class="setting-group">
         <label for="scaleSlider">UI Scale (<span id="scaleValue">100</span>%)</label>
         <input type="range" id="scaleSlider" min="0.5" max="1.5" step="0.05" value="1">
       </div>
@@ -78,7 +96,10 @@
       <hr>
 
       <div class="setting-group">
-        <label>Custom Wallpaper</label>
+        <label>Select Template Wallpaper</label>
+        <div id="wallpaperTemplateGrid" class="wallpaper-template-grid">
+          </div>
+        <label style="margin-top: 12px;">Or Upload Custom Wallpaper</label>
         <input type="file" id="wallpaperUpload" accept="image/*">
         <button id="resetWallpaperBtn" class="danger-btn">Reset to Default</button>
       </div>
@@ -95,6 +116,9 @@
 
       <div class="setting-group">
         <label>Toggle Visible Elements</label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="toggleQuicklinks" checked> Quick Links Bar
+        </label>
         <label class="checkbox-container">
           <input type="checkbox" id="toggleDate" checked> Date Module
         </label>
